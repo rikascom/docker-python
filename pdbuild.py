@@ -56,13 +56,12 @@ if sourcedir != "":
 	file.write("COPY " + sourcedir + " " + destdir + "\n\n")
 
 imagename = input("\nName this Image (name:tag): ")
-containername = input("\nName the Container: ")
 
 print("\n")
 
 file.flush()
 os.system("docker build -t " + imagename + " .")
-# os.system("docker run -d -it --name " + containername + " " + imagename)
+# os.system("docker run -d -it --name " + " " + imagename)
 
 # os.system("docker ps")
 os.system("docker images")
