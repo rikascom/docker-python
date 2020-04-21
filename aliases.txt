@@ -1,4 +1,4 @@
-## List of aliases I use in my .bashrc file
+# List of aliases I use in my .bashrc file
 
 alias dattach='docker exec -it'
 alias dimages='docker images'
