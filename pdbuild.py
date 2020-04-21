@@ -46,23 +46,27 @@ while packages != "":
 		break
 	packs += (packages + " ")
 if packs != "":
-	file.write("RUN apt-get update -y && apt-get install -y " + packs + "\n\n")
+	file.write("RUN apt-get update -y && apt-get install -y " + packs + "\n")
+
+command = input("\nCommand to RUN: ")
+if command != "":
+	file.write("\nRUN " + command + "\n")
 
 workingdir = input("\nEnter working directory (Blank for none): ")
 if workingdir != "":
-	file.write("WORKDIR " + workingdir + "\n\n")
+	file.write("\nWORKDIR " + workingdir + "\n")
 
 sourcedir = input("\nSource Files Path (Blank for None): ")
 if sourcedir != "":
 	destdir = input("Destination Container Path: ")
-	file.write("COPY " + sourcedir + " " + destdir + "\n\n")
+	file.write("\nCOPY " + sourcedir + " " + destdir + "\n\n")
 
 imagename = input("\nName this Image (name:tag): ")
 
 print("\n")
 
 file.flush()
-print("docker build -t " + imagename + " .")
+os.system("docker build -t " + imagename + " .")
 
 os.system("docker images")
 
