@@ -1,0 +1,13 @@
+## List of aliases I use in my .bashrc file
+
+alias dattach='docker exec -it'
+alias dimages='docker images'
+alias drm='docker rm'
+alias dps='docker ps -a'
+alias dpull='docker pull'
+alias dstart='docker start -i'
+alias dstop='docker stop'
+alias drun='python3 ~/python/pdrun.py'
+alias dbuild='python3 ~/python/pdbuild.py'
+alias drmi='docker rmi'
+

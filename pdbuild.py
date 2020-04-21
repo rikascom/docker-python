@@ -9,21 +9,23 @@ print("Current Docker Images\n")
 os.system("docker images")
 file = open("Dockerfile","a")
 
+baseimage = input("\nBase Image: ")
+if baseimage == "":
+	exit()
+tagname = input("Tag: ")
+file.write("FROM " + baseimage + ":" + tagname + "\n")
+
 maintainer = input("\nEnter Author's Name: ")
 if maintainer == "":
 	exit()
 if maintainer == ".":
 	maintainer = "Sean Rikard"
 	email = "smrikard@gmail.com"
-elif maintainer != "":
+else:
 	email = input("Enter Author's email address: ")
-	file.write("\nMAINTAINER " + maintainer + " " + email + "\n\n")
+file.write("\nMAINTAINER " + maintainer + " " + email + "\n\n")
 
-baseimage = input("\nBase Image: ")
-tagname = input("Tag: ")
-file.write("FROM " + baseimage + ":" + tagname + "\n\n")
-
-print("\nEnter Ports to Enable (One Port per Line, blank if none or to end.)")
+print("\nEnter Ports to Enable (One Port per Line, or seperate with space on single line, blank if none or to end.)")
 print("Enter port only such as 80, or port with protocol, such as 80/tcp\n")
 ports = ""
 exposeports = "1"
@@ -61,10 +63,8 @@ imagename = input("\nName this Image (name:tag): ")
 print("\n")
 
 file.flush()
-os.system("docker build -t " + imagename + " .")
-# os.system("docker run -d -it --name " + " " + imagename)
+print("docker build -t " + imagename + " .")
 
-# os.system("docker ps")
 os.system("docker images")
 
 
